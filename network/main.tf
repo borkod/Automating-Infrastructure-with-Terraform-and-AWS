@@ -1,5 +1,5 @@
 module "vpc" {
-  source = ".//modules/vpc/"
+  source = "../modules/vpc/"
 
   name = "my-vpc"
   cidr = "172.16.0.0/16"
