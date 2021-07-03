@@ -31,12 +31,6 @@ variable "subnet_ids" {
   default     = []
 }
 
-variable "key_name" {
-  description = "The key name to use for the instance"
-  type        = string
-  default     = ""
-}
-
 variable "vpc_security_group_ids" {
   description = "A list of security group IDs to associate with"
   type        = list(string)
