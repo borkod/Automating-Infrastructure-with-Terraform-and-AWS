@@ -1,0 +1,8 @@
+{
+    "short_name": "Koffee Luv",
+    "name": "Koffee Luv Homepage",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
