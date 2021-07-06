@@ -20,15 +20,23 @@ resource "aws_lb_listener" "app-layer-Listener" {
   }
 }
 
+locals {
+  target_groups = [
+    "green",
+    "blue",
+  ]
+}
+
 resource "aws_lb_target_group" "app-layer-TG" {
-  name              = "app-layer-TG"
+  count = length(local.target_groups)
+  name = "app-layer-TG-${element(local.target_groups, count.index)}"
   port              = 8080
   protocol          = "HTTP"
   vpc_id            = data.aws_vpc.my-vpc.id
   target_type       = "instance"
   health_check {
     protocol        = "HTTP"
-    path            = "/" 
+    path            = "/KoffeeLuv" 
   }
   
 }

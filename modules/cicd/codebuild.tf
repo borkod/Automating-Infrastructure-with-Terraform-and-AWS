@@ -34,6 +34,21 @@ resource "aws_codebuild_project" "live-project-codebuild" {
       name                                  = "AWS_ACCOUNT_ID"
       value                                 = data.aws_caller_identity.current.account_id
     }
+
+    environment_variable {
+      name                                  = "TASK_DEFINITION"
+      value                                 = "arn:aws:ecs:${var.region}:${data.aws_caller_identity.current.account_id}:task-definition/webserver"
+    }
+
+    environment_variable {
+      name                                  = "FAMILY"
+      value                                 = "webserver"
+    }
+
+    environment_variable {
+      name                                  = "CONTAINER_NAME"
+      value                                 = "webserver"
+    }
     
   }
 

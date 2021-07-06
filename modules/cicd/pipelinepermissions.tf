@@ -26,12 +26,12 @@ data "aws_iam_policy_document" "assume_by_pipeline" {
 }
 
 data "aws_iam_policy_document" "pipelinePermissionsDocument" {
-    # statement {
-    #     sid    = "AllowPassRole"
-    #     effect = "Allow"
-    #     actions = ["iam:PassRole"]
-    #     resources = [aws_iam_role.codeDeployServiceRole.arn]
-    # }
+    statement {
+        sid    = "AllowPassRole"
+        effect = "Allow"
+        actions = ["iam:PassRole"]
+        resources = [aws_iam_role.codeDeployServiceRole.arn]
+    }
 
     statement {
         sid = "AllowECR"

@@ -44,23 +44,23 @@ resource "aws_codepipeline" "live-project-code-pipeline" {
     }
   }
 
-  # stage {
-  #   name = "Deploy"
+  stage {
+    name = "Deploy"
 
-  #   action {
-  #     name            = "Deploy"
-  #     category        = "Deploy"
-  #     owner           = "AWS"
-  #     provider        = "CodeDeployToECS"
-  #     version         = "1"
-  #     input_artifacts = ["buildArtifact"]
+    action {
+      name            = "Deploy"
+      category        = "Deploy"
+      owner           = "AWS"
+      provider        = "CodeDeployToECS"
+      version         = "1"
+      input_artifacts = ["buildArtifact"]
 
-  #     configuration = {
-  #       ApplicationName                = aws_codedeploy_app.koffeeLuvApp.name
-  #       DeploymentGroupName            = aws_codedeploy_deployment_group.koffeeLuvAppDeploymentGroup.deployment_group_name
-  #       TaskDefinitionTemplateArtifact = "buildArtifact"
-  #       AppSpecTemplateArtifact        = "buildArtifact"
-  #     }
-  #   }
-  # }
+      configuration = {
+        ApplicationName                = aws_codedeploy_app.liveproject-deploy.name
+        DeploymentGroupName            = aws_codedeploy_deployment_group.liveproject-DeploymentGroup.deployment_group_name
+        TaskDefinitionTemplateArtifact = "buildArtifact"
+        AppSpecTemplateArtifact        = "buildArtifact"
+      }
+    }
+  }
 }
