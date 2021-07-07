@@ -71,8 +71,8 @@ resource "aws_iam_role_policy" "code-build-policy" {
         "s3:*"
       ],
       "Resource": [
-        "${aws_s3_bucket.codecommit-s3.arn}",
-        "${aws_s3_bucket.codecommit-s3.arn}/*"
+        "${var.sourceS3BucketArn}",
+        "${var.sourceS3BucketArn}/*"
       ]
     }
   ]

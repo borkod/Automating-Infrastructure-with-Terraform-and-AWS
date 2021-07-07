@@ -3,6 +3,10 @@ variable "region" {
     default = "us-east-1"
 }
 
+variable "sourceS3BucketArn" {
+    type = string
+}
+
 variable "repo_name" {
     type = string
     default = "webserver"

@@ -52,8 +52,8 @@ data "aws_iam_policy_document" "pipelinePermissionsDocument" {
         ]
 
         resources = [
-            "${aws_s3_bucket.codecommit-s3.arn}",
-            "${aws_s3_bucket.codecommit-s3.arn}/*"
+            "${var.sourceS3BucketArn}",
+            "${var.sourceS3BucketArn}/*"
         ]
     }
 

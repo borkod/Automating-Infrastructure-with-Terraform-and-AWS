@@ -7,8 +7,14 @@ module "code_commit" {
     ecsTaskRoleArn  = data.aws_iam_role.ecsServiceRole.arn
     ecsServiceRoleArn = data.aws_iam_role.ecsTaskRole.arn
     ecsServiceArn = data.aws_ecs_service.app_ecs.arn
+    sourceS3BucketArn = module.storage.sourceCodeBucketArn
 }
 
+module "storage" {
+    source                          = "./storage"
+    destBucketArn                   = module.destStorage.destBucketArn
+    destKmsArn                      = module.destStorage.destKmsArn
+}
 data "aws_lb" "app-layer-ALB" {
   name = "app-layer-ALB"
 }
@@ -33,4 +39,8 @@ data "aws_ecs_service" "app_ecs" {
 
 data "aws_ecs_cluster" "app_ecs_cluster" {
   cluster_name = "live-project-ecs-cluster"
+}
+
+data "aws_s3_bucket" "selected" {
+  bucket = "bucket.test.com"
 }
